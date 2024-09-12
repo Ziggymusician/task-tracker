@@ -1,0 +1,9 @@
+<div class="flex items-center justify-center space-x-4">
+  @for (status of statuses(); track $index) {
+  <status-column
+    [status]="status"
+    [tickets]="tickets()"
+    (updateTicket)="onUpdateTicket($event)"
+  />
+  }
+</div>

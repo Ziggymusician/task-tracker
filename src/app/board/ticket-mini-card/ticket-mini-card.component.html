@@ -1,0 +1,37 @@
+<div
+  class="bg-white border border-red-50 box-border shadow-sm rounded-lg"
+  [ngClass]="mainContainerFlagggedClasses"
+>
+  <div class="px-2 pt-2">
+    <span class="font-thin text-sm uppercase">{{ ticket.id }}</span>
+    <p class="text-sm my-2">{{ ticket.title }}</p>
+  </div>
+  <div
+    class="relative flex justify-between mt-2 p-2 rounded-b-lg shadow-sm bg-gray-100"
+  >
+    <span
+      class="text-xs font-bold text-white px-3 py-1 border rounded-full uppercase"
+      [ngClass]="typeClasses"
+    >
+      {{ type }}
+    </span>
+    @if (ticket.isFlagged) {
+    <div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="rgb(220 38 38 / 1)"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="rgb(185 28 28 / 1)"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5"
+        />
+      </svg>
+    </div>
+    }
+  </div>
+</div>
