@@ -1,5 +1,5 @@
 <div
-  class="bg-gray-200 min-h-full w-60 rounded-lg mt-2 shadow-md"
+  class="bg-gray-200 h-full w-60 rounded-lg mt-2 shadow-md"
   [attr.data-status]="status()"
   (drop)="onDrop($event)"
   (dragover)="onDragOver($event)"
@@ -10,13 +10,14 @@
     {{ heading() }}
   </div>
 
-  <div class="mt-3 mx-3 space-y-3">
+  <div class="flex-1 mt-3 mx-3 space-y-3">
     @for (ticket of tickets() | filterByStatus: status(); track ticket.id) {
     <ticket-mini-card
       draggable="true"
       [ticket]="ticket"
       (drop)="onDrop($event)"
       (dragstart)="onDragStart.bind(null, ticket, $event).call($event)"
+      (click)="onViewTicket(ticket.id || '')"
     />
     }
   </div>

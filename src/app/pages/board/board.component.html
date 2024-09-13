@@ -1,0 +1,22 @@
+<div class="flex flex-col items-center justify-center">
+  <div class="w-full flex justify-center py-2">
+    <div class="w-4/6 px-4 mr-4 text-right">
+      <button
+        [routerLink]="['/', 'Ticket-' + (tickets().length + 1)]"
+        class="bg-green-600 hover:bg-green-500 hover:scale-105 transition-all duration-150 py-1 px-3 mt-1 rounded-md font-bold text-white"
+      >
+        + Add
+      </button>
+    </div>
+  </div>
+
+  <div class="flex space-x-4">
+    @for (status of statuses(); track $index) {
+    <status-column
+      [status]="status"
+      [tickets]="tickets()"
+      (updateTicket)="onUpdateTicket($event)"
+    />
+    }
+  </div>
+</div>

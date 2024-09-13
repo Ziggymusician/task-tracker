@@ -6,6 +6,7 @@ export interface Ticket {
   description: string;
   status: Status;
   type: TicketType;
-  createdOn: Date;
   isFlagged: boolean;
+  createdOn?: Date;
+  updatedOn?: Date;
 }

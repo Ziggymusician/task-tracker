@@ -2,15 +2,17 @@ import {
   Component,
   computed,
   EventEmitter,
+  inject,
   input,
   Output,
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { TicketMiniCardComponent } from '../ticket-mini-card/ticket-mini-card.component';
-import { FilterTicketsPipe } from '../../pipes';
-import { getStatusStringValue } from '../../utils';
-import { Status } from '../../enums';
-import { Ticket } from '../../models';
+import { FilterTicketsPipe } from '../../../pipes';
+import { getStatusStringValue } from '../../../utils';
+import { Status } from '../../../enums';
+import { Ticket } from '../../../models';
 
 @Component({
   selector: 'status-column',
@@ -28,6 +30,7 @@ export class StatusColumnComponent {
   public heading = computed(() => {
     return getStatusStringValue(this.status());
   });
+  private router = inject(Router);
 
   public onDrop(event: DragEvent): void {
     event.preventDefault();
@@ -60,5 +63,9 @@ export class StatusColumnComponent {
 
   public onDragStart(ticket: Ticket, event: DragEvent): void {
     event.dataTransfer?.setData('text', ticket.id || '');
+  }
+
+  public onViewTicket(ticketId: string): void {
+    this.router.navigate([`/${ticketId}`]);
   }
 }

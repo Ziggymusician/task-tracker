@@ -1,0 +1,29 @@
+:host {
+  display: block;
+}
+
+.form-group {
+  /* @apply bg-slate-500; */
+}
+
+.form-group label {
+  @apply block font-normal text-[0.825rem] my-2;
+}
+
+.form-group input[type="text"] {
+  @apply w-full;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  @apply p-2 bg-white border border-[#ccc] rounded-md text-[#555] text-sm outline-0;
+}
+
+.form-group select {
+  @apply w-40;
+}
+
+.btn {
+  @apply py-1 px-4 w-20 border rounded-md hover:scale-105 transition-all duration-150;
+}

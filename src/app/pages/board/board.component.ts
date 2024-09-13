@@ -6,14 +6,15 @@ import {
 } from '@angular/core';
 
 import { StatusColumnComponent } from './status-column/status-column.component';
-import { TicketService } from '../services/ticket.service';
-import { Status } from '../enums';
-import { Ticket } from '../models';
+import { TicketService } from '../../services/ticket.service';
+import { Status } from '../../enums';
+import { Ticket } from '../../models';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [StatusColumnComponent],
+  imports: [RouterLink, StatusColumnComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './board.component.html',
   styleUrl: './board.component.css',

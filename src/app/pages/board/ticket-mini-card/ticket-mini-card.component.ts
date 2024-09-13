@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { NgClass } from '@angular/common';
 
-import { Ticket } from '../../models';
-import { TicketType } from '../../enums';
-import { getEnumValueName } from '../../utils';
+import { Ticket } from '../../../models';
+import { TicketType } from '../../../enums';
+import { getEnumValueName } from '../../../utils';
 
 @Component({
   selector: 'ticket-mini-card',

@@ -6,13 +6,14 @@ import { Ticket } from '../models';
 const TICKETS: Ticket[] = [
   {
     id: 'Ticket-1',
-    title: '[BUG] Game crashes when only one enemy remains',
+    title: '[GamePlay] Game crashes when only one enemy remains',
     description:
       'As a game player, I want to be able to play against the last enemy and once I defeat the enemy I can continue to the next step/level.',
     status: Status.InProgress,
     type: TicketType.Bug,
     isFlagged: false,
     createdOn: new Date(),
+    updatedOn: new Date(),
   },
   {
     id: 'Ticket-2',
@@ -23,6 +24,7 @@ const TICKETS: Ticket[] = [
     type: TicketType.Story,
     isFlagged: true,
     createdOn: new Date(),
+    updatedOn: new Date(),
   },
 ];
 
@@ -36,6 +38,16 @@ export class TicketService {
 
   public getTickets(): Ticket[] {
     return this.tickets;
+  }
+
+  public getTicket(id: string): Ticket | undefined {
+    const results = this.tickets.filter((ticket) => ticket.id === id);
+
+    if (results.length === 1) {
+      return results[0];
+    }
+
+    return undefined;
   }
 
   public addTicket(ticket: Ticket): void {
