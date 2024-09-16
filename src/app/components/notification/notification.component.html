@@ -1,0 +1,14 @@
+@if (message) {
+<div
+  class="absolute mx-auto px-6 py-4 rounded-md inline-block bg-blue-400 text-white text-sm"
+  [ngClass]="notificationClasses"
+>
+  <span
+    class="absolute w-4 h-4 text-sm text-center box-content text-red-600 right-1 top-1 cursor-pointer font-bold"
+    (click)="onClose()"
+  >
+    x
+  </span>
+  {{ message }}
+</div>
+}

@@ -50,17 +50,35 @@ export class TicketService {
     return undefined;
   }
 
-  public addTicket(ticket: Ticket): void {
-    // TODO
+  public addTicket(ticket: Ticket): boolean {
+    let ticketToAdd = this.tickets.find((t) => t.id === ticket.id);
+
+    if (ticketToAdd) {
+      return false;
+    }
+
+    this.tickets.push({
+      ...ticket,
+      createdOn: new Date(),
+      updatedOn: new Date(),
+    });
+
+    return true;
   }
 
-  public updateTicket(ticket: Ticket): void {
+  public updateTicket(ticket: Ticket): boolean {
     let ticketToUpdate = this.tickets.find((t) => t.id === ticket.id);
 
     if (!ticketToUpdate) {
-      return;
+      return false;
     }
     const index = this.tickets.indexOf(ticketToUpdate);
-    this.tickets[index] = { ...ticketToUpdate, ...ticket };
+    this.tickets[index] = {
+      ...ticketToUpdate,
+      ...ticket,
+      updatedOn: new Date(),
+    };
+
+    return true;
   }
 }

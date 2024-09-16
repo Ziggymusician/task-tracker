@@ -24,6 +24,14 @@
   @apply w-40;
 }
 
+.form-group select:disabled {
+  @apply bg-gray-100 cursor-not-allowed;
+}
+
 .btn {
-  @apply py-1 px-4 w-20 border rounded-md hover:scale-105 transition-all duration-150;
+  @apply py-1 px-4 w-20 border cursor-pointer rounded-md hover:scale-105 transition-all duration-150;
+}
+
+.btn:disabled {
+  @apply cursor-not-allowed bg-gray-200 text-gray-400 hover:scale-100;
 }

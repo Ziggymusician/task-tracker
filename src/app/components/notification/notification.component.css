@@ -1,0 +1,11 @@
+:host {
+  @apply flex justify-center items-center w-full;
+}
+
+.success {
+  @apply bg-green-500;
+}
+
+.error {
+  @apply bg-red-400;
+}
