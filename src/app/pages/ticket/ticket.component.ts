@@ -1,5 +1,6 @@
 import {
   Component,
+  DestroyRef,
   input,
   InputSignal,
   OnDestroy,
@@ -42,6 +43,7 @@ export class TicketComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private destroyRef: DestroyRef,
     private ticketService: TicketService
   ) {}
 
@@ -111,6 +113,20 @@ export class TicketComponent implements OnInit, OnDestroy {
     this.initTypes();
     this.initStatuses();
     this.initForm();
+
+    const sub = this.form
+      .get('isFlagged')
+      ?.valueChanges.subscribe((isFlagged: boolean) => {
+        if (isFlagged) {
+          this.form.get('status')?.disable();
+        } else {
+          this.form.get('status')?.enable();
+        }
+      });
+
+    this.destroyRef.onDestroy(() => {
+      sub?.unsubscribe();
+    });
   }
 
   private initTypes(): void {
@@ -155,10 +171,10 @@ export class TicketComponent implements OnInit, OnDestroy {
     this.form = this.fb.group({
       title: this.fb.control('', [Validators.required]),
       description: this.fb.control('', [Validators.required]),
-      type: this.fb.control({ value: null, disabled: isFlagged }, [
+      type: this.fb.control(null, [Validators.required]),
+      status: this.fb.control({ value: null, disabled: isFlagged }, [
         Validators.required,
       ]),
-      status: this.fb.control(null, [Validators.required]),
       isFlagged: this.fb.control(false),
     });
 
